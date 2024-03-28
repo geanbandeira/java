@@ -3,13 +3,15 @@ class Cliente {
     private String email;
     private String endereco;
     private String telComercial;
+    private String telResidencial
     private PerfilCliente perfil;
 
-    public Cliente(String nome, String email, String endereco, String telComercial) {
+    public Cliente(String nome, String email, String endereco, String telComercial, String telResidencial) {
         this.nome = nome;
         this.email = email;
         this.endereco = endereco;
         this.telComercial = telComercial;
+        this.telResidencial = telResidencial
     }
 
     public String getNome() {
@@ -28,6 +30,9 @@ class Cliente {
         return telComercial;
     }
 
+    public String getTelResidencial(){
+        return telResidencial;
+
     public PerfilCliente getPerfil() {
         return perfil;
     }
@@ -45,12 +50,10 @@ class Cliente {
     }
 
     public void popular(String child) {
-        // Lógica para popular as informações do cliente
         System.out.println("Informações do cliente populadas.");
     }
 
     public void preencher(String regDB) {
-        // Lógica para preencher as informações do cliente em um banco de dados
         System.out.println("Informações do cliente preenchidas no banco de dados.");
     }
 }
@@ -73,12 +76,11 @@ class PerfilCliente {
     }
 
     public void popular(String child) {
-        System.out.println("Informações do perfil de cliente populadas.");
+        System.out.println("Informações do perfil de cliente populadas");
     }
 
     public void preencher(String regDB) {
-        // Lógica para preencher as informações do perfil de cliente em um banco de dados
-        System.out.println("Informações do perfil de cliente preenchidas no banco de dados.");
+        System.out.println("Informações do perfil de cliente preenchidas no banco de dados");
     }
 
     public void setarPai(Cliente cliente) {
@@ -99,6 +101,7 @@ public class Main {
         System.out.println("Email: " + cliente.getEmail());
         System.out.println("Endereço: " + cliente.getEndereco());
         System.out.println("Telefone Comercial: " + cliente.getTelComercial());
+        System.out.println("Telefone Residencial: " + cliente.getTelResidencial());
         System.out.println("Informações do perfil de cliente:");
         System.out.println("Fumante: " + perfil.isFumante());
         System.out.println("Preferência de Categoria de Veículo: " + perfil.getPreferenciaCategoriaVeic());
