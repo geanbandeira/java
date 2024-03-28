@@ -1,0 +1,126 @@
+// Classe Cliente
+class Cliente {
+    private String nome;
+    private String email;
+    private String endereco;
+    private String telComercial;
+    private PerfilCliente perfil;
+
+    // Construtor
+    public Cliente(String nome, String email, String endereco, String telComercial) {
+        this.nome = nome;
+        this.email = email;
+        this.endereco = endereco;
+        this.telComercial = telComercial;
+    }
+
+    // Métodos de acesso
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public String getTelComercial() {
+        return telComercial;
+    }
+
+    public PerfilCliente getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(PerfilCliente perfil) {
+        this.perfil = perfil;
+    }
+
+    // Método para associar um perfil ao cliente
+    public void associarPerfil(PerfilCliente perfil) {
+        this.perfil = perfil;
+    }
+
+    // Método para obter o perfil do cliente
+    public PerfilCliente obterPerfil() {
+        return perfil;
+    }
+
+    // Método para popular informações de um cliente
+    public void popular(String child) {
+        // Lógica para popular as informações do cliente
+        System.out.println("Informações do cliente populadas.");
+    }
+
+    // Método para preencher informações de um cliente em um banco de dados
+    public void preencher(String regDB) {
+        // Lógica para preencher as informações do cliente em um banco de dados
+        System.out.println("Informações do cliente preenchidas no banco de dados.");
+    }
+}
+
+// Classe PerfilCliente
+class PerfilCliente {
+    private boolean fumante;
+    private String preferenciaCategoriaVeic;
+
+    // Construtor
+    public PerfilCliente(boolean fumante, String preferenciaCategoriaVeic) {
+        this.fumante = fumante;
+        this.preferenciaCategoriaVeic = preferenciaCategoriaVeic;
+    }
+
+    // Métodos de acesso
+    public boolean isFumante() {
+        return fumante;
+    }
+
+    public String getPreferenciaCategoriaVeic() {
+        return preferenciaCategoriaVeic;
+    }
+
+    // Método para popular informações do perfil de cliente
+    public void popular(String child) {
+        // Lógica para popular as informações do perfil do cliente
+        System.out.println("Informações do perfil de cliente populadas.");
+    }
+
+    // Método para preencher informações do perfil de cliente em um banco de dados
+    public void preencher(String regDB) {
+        // Lógica para preencher as informações do perfil de cliente em um banco de dados
+        System.out.println("Informações do perfil de cliente preenchidas no banco de dados.");
+    }
+
+    // Método para associar um cliente a este perfil
+    public void setarPai(Cliente cliente) {
+        // Lógica para associar o cliente a este perfil
+        cliente.setPerfil(this);
+    }
+}
+
+// Classe principal
+public class Main {
+    public static void main(String[] args) {
+        // Criando um perfil de cliente
+        PerfilCliente perfil = new PerfilCliente(true, "SUV");
+
+        // Criando um cliente
+        Cliente cliente = new Cliente("João", "joao@example.com", "Rua A, 123", "123456789");
+        
+        // Associando o perfil ao cliente
+        perfil.setarPai(cliente);
+
+        // Exibindo informações do cliente e do perfil
+        System.out.println("Informações do cliente:");
+        System.out.println("Nome: " + cliente.getNome());
+        System.out.println("Email: " + cliente.getEmail());
+        System.out.println("Endereço: " + cliente.getEndereco());
+        System.out.println("Telefone Comercial: " + cliente.getTelComercial());
+        System.out.println("Informações do perfil de cliente:");
+        System.out.println("Fumante: " + perfil.isFumante());
+        System.out.println("Preferência de Categoria de Veículo: " + perfil.getPreferenciaCategoriaVeic());
+    }
+}
