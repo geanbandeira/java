@@ -92,7 +92,6 @@ class PerfilCliente {
 public class Main {
     public static void main(String[] args) {
         PerfilCliente perfil = new PerfilCliente(true, "SUV");
-
         Cliente cliente = new Cliente("João", "joao@example.com", "Rua A, 123", "123456789", "554564512");
         
         perfil.setarPai(cliente);
