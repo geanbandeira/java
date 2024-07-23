@@ -37,7 +37,7 @@ class Ator{
     }
     
     public String toString(){
-        return "\nCPF: " + cpf + "\nEndereço: " + endereco + "\nData de Nascimento: " + dataNascimento "\n";
+        return "\nCPF: " + cpf + "\nEndereço: " + endereco + "\nData de Nascimento: " + dataNascimento + "\n";
     }
 }
 
@@ -96,26 +96,91 @@ public class Main{
         String endereco = scanner.nextLine();
         System.out.println("Data de Nascimento: ");
         String dataNascimento = scanner.nextLine();
-        System.out.println("");
+        
+        Ator ator = new Ator(cpf, endereco, dataNascimento);
+        atores.add(ator);
+        System.out.println("Ator cadastrado com sucesso\n");
         
     }
     
     private static void listarAtores(){
-        
+        if(atores.isEmpty()){
+            System.out.println("Nenhum ator encontrado");
+        }else{
+            System.out.println("Lista de atores \n");
+            for(Ator ator : atores){
+                System.out.println(ator);
+                break;
+            }
+        }
     }
     
     private static void buscarAtor(){
+        System.out.println("CPF: ");
+        String cpf = scanner.nextLine();
         
+        boolean encontrado = false;
+        for(Ator ator : atores){
+            if(ator.getCpf().equals(cpf)){
+                System.out.println("Ator encontrado\n");
+                System.out.println(ator);
+                System.out.println("\n");
+                encontrado = true;
+                break;
+            }
+        }
+        if(!encontrado){
+            System.out.println("Ator nao encontrado\n");
+        }
     }
     
     private static void atualizarAtor(){
+        System.out.println("CPF: ");
+        String cpf = scanner.nextLine();
+        
+        Ator atorEncontrado = null;
+        for(Ator ator : atores){
+            if(ator.getCpf().equals(cpf)){
+                atorEncontrado = ator;
+                break;
+            }
+        }
+        if(atorEncontrado == null){
+            System.out.println("Ator nao encontrado\n");
+            return;
+        }
+        
+        System.out.println("Novo Endereço: ()");
+        String novoEndereco = scanner.nextLine();
+        if(!novoEndereco.isEmpty()){
+            atorEncontrado.setEndereco(novoEndereco);
+        }
+        System.out.println("Dados atualizado com sucesso\n");
         
     }
     
     private static void deletarAtor(){
+        System.out.println("CPF: ");
+        String cpf = scanner.nextLine();
         
+        boolean encontrado = false;
+        Iterator<Ator> iterator = atores.iterator();
+        while(iterator.hasNext()){
+            Ator ator = iterator.next();
+            if(ator.getCpf().equals(cpf)){
+                iterator.remove();
+                System.out.println("Ator removido com sucesso\n");
+                encontrado = true;
+                break;
+            }
+        }
+        if(!encontrado){
+            System.out.println("Ator nao encontrado\n");
+        }
     }
     
-    
-    
 }    
+
+
+
+
