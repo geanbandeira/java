@@ -3,9 +3,13 @@ import java.util.*;
 
 class Paciente{
     private String nome;
+	private String dataNascimento;
+	private Double idade;
     
-    public Paciente(String nome){
+    public Paciente(String nome, String dataNascimento, Double idade){
         this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.idade = idade;
     }
 }
 
@@ -15,35 +19,25 @@ public class Main{
     
     System.out.println("Nome: ");
     String nome = scanner.nextLine();
-    System.out.println("Peso: ");
-    Double peso = scanner.nextDouble();
-    System.out.println("Altura: ");
-    Double altura = scanner.nextDouble();
+    System.out.println("Data de nascimento: (dd/mm/yyyy)");
+    String dataNascimento = scanner.nextLine();
+    System.out.println("Idade: ");
+    Double idade = scanner.nextDouble();
     
-    Double calcularIMC = peso/(altura * altura);
-    
-    if(calcularIMC < 20){
-        System.out.println("\nAbaixo do peso\n");
-        System.out.println("IMC: " + calcularIMC);
-    }else if(calcularIMC <25){
-        System.out.println("\nPeso normal\n");
-        System.out.println("IMC: " + calcularIMC);
-    }else if(calcularIMC < 30){
-        System.out.println("\nExcesso de peso\n");
-        System.out.println("IMC: " + calcularIMC);
-    }else if(calcularIMC < 35){
-        System.out.println("\nObesidade\n");
-        System.out.println("IMC: " + calcularIMC);
-    }else if(calcularIMC >= 35){
-        System.out.println("\nObesidade Morbida\n");
-        System.out.println("IMC: " + calcularIMC);
+    if(idade < 16){
+        System.out.println("\nNao Eleitor\n");
+        System.out.println(idade);
+    }else if(idade <18){
+        System.out.println("\nEleitor Facultativo\n");
+        System.out.println(idade);
+    }else if(idade < 65){
+        System.out.println("\nEleitor Obrigatorio\n");
+        System.out.println(idade);
+    }else if(idade > 65){
+        System.out.println("\nEleitor Facultativo \n");
+        System.out.println(idade);
     }else{
         System.out.println("\nFez coisa errada camarada\n");
     }
-    
-    //System.out.println(calcularIMC);
-    
-    
-    
 	}
 }
